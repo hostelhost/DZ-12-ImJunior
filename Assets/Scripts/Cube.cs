@@ -11,7 +11,7 @@ public class Cube : MonoBehaviour
 
     public int SeparationProbability { get; private set; }
 
-    private void OnMouseUpAsButton()
+    public void OnClick()
     {
         if (IsProbable(SeparationProbability))
             Separation?.Invoke(this);

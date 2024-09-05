@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class ForceApplier : MonoBehaviour
 {
-    [SerializeField] private float _explosiveForce = 10f;
+    [SerializeField] private float _startForce = 1;
+    [SerializeField] private float _startSphereRadius = 1;
 
-    public void BlowUp(Vector3 explosionPosition, float radius)
+    public void BlowUp(Vector3 explosionPosition, float cubeScale)
     {
-        foreach (Rigidbody rigidbody in GetNearRigidbodies(explosionPosition, radius))
-            rigidbody.AddExplosionForce(_explosiveForce, explosionPosition, radius);
+        foreach (Rigidbody rigidbody in GetNearRigidbodies(explosionPosition, _startSphereRadius / cubeScale))
+            rigidbody.AddExplosionForce(_startForce / cubeScale, explosionPosition, cubeScale);
     }
 
     private List<Rigidbody> GetNearRigidbodies(Vector3 explosionPosition, float radius)

@@ -5,7 +5,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Cube _cube;
     [SerializeField] private List<Cube> _cubesOnScene;
-    [SerializeField] private ForceApplier _forceApplier;
+
     private int _startSeparationProbability = 200;
 
     private void Start()
@@ -16,11 +16,10 @@ public class Spawner : MonoBehaviour
             cube.Separation += OnSeparation;
         }
     }
-    
+
     private void OnSeparation(Cube cube)
     {
         CreateCubes(cube);
-        _forceApplier.BlowUp(cube.transform.position, cube.transform.localScale.x);
     }
 
     private void CreateCubes(Cube cube)
